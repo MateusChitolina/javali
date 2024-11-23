@@ -2,9 +2,9 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-const Button = styled(TouchableOpacity)`
-  padding: 10px 60px;
-  border-radius: 80px;
+const StyledButton = styled(TouchableOpacity)`
+  padding: 16px 96px;
+  border-radius: 30px;
   background-color: #FFF;
   elevation: 5; /* Sombra para Android */
   shadow-color: #000; /* Sombra para iOS */
@@ -14,18 +14,23 @@ const Button = styled(TouchableOpacity)`
 `;
 
 const ButtonText = styled(Text)`
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.primary};
   text-align: center;
   font-size: 20px;
   font-weight: bold;
 `;
 
-const RoundedButton: React.FC<{ text: string }> = ({ text }) => {
+interface GenericButtonProps {
+  text: string;
+  onPress: () => void;
+}
+
+const GenericButton: React.FC<GenericButtonProps> = ({ text, onPress }) => {
   return (
-    <Button>
+    <StyledButton onPress={onPress}>
       <ButtonText>{text}</ButtonText>
-    </Button>
+    </StyledButton>
   );
 };
 
-export default RoundedButton;
+export default GenericButton;

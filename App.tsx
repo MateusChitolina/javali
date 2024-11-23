@@ -5,35 +5,23 @@
  * @format
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  useColorScheme,
-} from 'react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import StartScreen from './screens/StartScreen';
+import StartScreen from './components/screens/StartScreen';
 import { theme } from './styles/theme';
 
+const Stack = createStackNavigator();
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <ThemeProvider theme={theme}>
-          <NavigationContainer>
-            <StartScreen />
-          </NavigationContainer>
-        </ThemeProvider>
-    </SafeAreaView>
-  );
-}
+const App: React.FC = () => (
+  <ThemeProvider theme={theme}>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Start" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Start" component={StartScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  </ThemeProvider>
+);
 
 export default App;
