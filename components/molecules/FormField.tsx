@@ -8,10 +8,25 @@ const Container = styled.View`
   width: 100%;
 `;
 
-const FormField: React.FC<{ label: string; placeholder: string }> = ({ label, placeholder }) => (
+interface FormFieldProps {
+  label: string;
+  placeholder: string;
+  value: string;
+  onChangeText: (e: string | React.ChangeEvent<any>) => void;
+  onBlur: (e: any) => void;
+  secureTextEntry?: boolean;
+}
+
+const FormField: React.FC<FormFieldProps> = (props) => (
   <Container>
-    <GenericTextLabel>{label}</GenericTextLabel>
-    <GenericTextInput placeholder={placeholder} />
+    <GenericTextLabel>{props.label}</GenericTextLabel>
+    <GenericTextInput
+      placeholder={props.placeholder}
+      value={props.value}
+      onChangeText={props.onChangeText}
+      onBlur={props.onBlur}
+      secureTextEntry={props.secureTextEntry}
+    />
   </Container>
 );
 

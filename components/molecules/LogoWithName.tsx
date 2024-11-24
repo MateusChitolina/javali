@@ -20,7 +20,7 @@ const LogoName = styled.Text`
   color: #5928ED;
 `;
 
-const LogoWithLabel: React.FC<{ label: string }> = () => {
+const LogoWithLabel: React.FC = () => {
   return (
     <Container>
       <DivLogo>

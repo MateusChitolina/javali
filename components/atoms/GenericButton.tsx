@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 const StyledButton = styled(TouchableOpacity)`
   padding: 16px 96px;
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: #FFF;
   elevation: 5; /* Sombra para Android */
   shadow-color: #000; /* Sombra para iOS */

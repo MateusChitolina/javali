@@ -1,4 +1,6 @@
-import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationProp } from '@react-navigation/native';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
@@ -27,14 +29,27 @@ const DivGlassWater = styled(View)`
   height: 55%;
 `;
 
-const StartScreen: React.FC = () => {
-  //const navigation = useNavigation();
+interface StartScreenProps {
+  navigation: NavigationProp<any>;
+}
+
+const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
+  useEffect(() => {
+    const checkAuthToken = async () => {
+      const authToken = await AsyncStorage.getItem('authToken');
+      if (authToken) {
+        console.log('Redirecionar'); // navigation.navigate('');
+      }
+    };
+
+    checkAuthToken();
+  }, [navigation]);
 
   return (
     <Background colors={['#00B4C5', '#D9D9D9']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}>
       <DivContainer>
-        <LogoWithLabel label="Your Label Here" />
-        <RoundedButton text={'FAZER LOGIN'} onPress={() => console.log('FAZER LOGIN')/*navigation.navigate('Another')*/} />
+        <LogoWithLabel />
+        <RoundedButton text={'FAZER LOGIN'} onPress={() => navigation.navigate('Login')} />
         <RoundedButton text={'CRIAR CONTA'} onPress={() => console.log('CRIAR CONTA')/*navigation.navigate('Another')*/} />
         <DivGlassWater>
           <GlassWater />

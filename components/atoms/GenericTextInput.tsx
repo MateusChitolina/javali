@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInputProps } from 'react-native';
 import styled from 'styled-components/native';
 
-const Input = styled.TextInput`
+const TextInput = styled.TextInput`
   font-size: 16px;
   color: ${({ theme }) => theme.colors.textInput};
   padding: 10px;
@@ -18,7 +18,7 @@ const Input = styled.TextInput`
 `;
 
 const GenericTextInput: React.FC<TextInputProps> = (props) => {
-  return <Input {...props} />;
+  return <TextInput {...props} />;
 };
 
 export default GenericTextInput;

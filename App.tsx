@@ -9,6 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import LoginScreen from './components/screens/LoginScreen';
 import StartScreen from './components/screens/StartScreen';
 import { theme } from './styles/theme';
 
@@ -19,6 +20,7 @@ const App: React.FC = () => (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Start" component={StartScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   </ThemeProvider>
